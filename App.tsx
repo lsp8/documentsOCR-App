@@ -78,6 +78,16 @@ const App = () => {
     setIsThereSurname(false);
   };
 
+  const handleAdjustName = () => {
+    setModalInfoAdjust(true);
+    setNameAdjust(true);
+  };
+
+  const handleAdjustCPF = () => {
+    setModalInfoAdjust(true);
+    setCPFAdjust(true);
+  };
+
   useEffect(() => {
     for (let i = 0; i <= blocks.length; i++) {
       if (
@@ -146,8 +156,7 @@ const App = () => {
               <Text
                 style={styles.data}
                 onPress={() => {
-                  setModalInfoAdjust(true);
-                  setNameAdjust(true);
+                  handleAdjustName();
                 }}>
                 Nome selecionado: {name} {surname}
               </Text>
@@ -158,8 +167,7 @@ const App = () => {
               <Text
                 style={styles.data}
                 onPress={() => {
-                  setModalInfoAdjust(true);
-                  setCPFAdjust(true);
+                  handleAdjustCPF();
                 }}>
                 CPF selecionado: {CPF}
               </Text>

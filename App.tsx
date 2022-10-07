@@ -11,9 +11,6 @@ import {
 import TextRecognition from 'react-native-text-recognition';
 import ImageCropPicker from 'react-native-image-crop-picker';
 
-//import EditField from './src/assets/svg/editfield.svg';
-//import {launchCamera} from 'react-native-image-picker';
-
 const App = () => {
   const [name, setName] = useState<string>('');
   const [CPF, setCPF] = useState<string>('');
@@ -46,17 +43,6 @@ const App = () => {
       countBlocks(result);
     });
   };
-
-  // const takePictureFromCamera = async () => {
-  //   const response = await launchCamera({mediaType: 'photo', quality: 1}).then(
-  //     async image => {
-  //       if (image){
-  //       const result = await TextRecognition.recognize(image.assets[0].uri!);
-  //       console.log('RESULT PICKER= ', result);
-  //       setObjeto(result);}
-  //     },
-  //   );
-  // };
 
   const countBlocks = (o: string[]) => {
     setBlocksAmount(o.length);
@@ -128,7 +114,7 @@ const App = () => {
 
   useEffect(() => {
     console.log('Name antes:', name);
-    let cleanName = name.replace('NOME' || 'C NOME' || 'CNOME', '');
+    let cleanName = name.replace('NOME', '');
     setName(cleanName);
     console.log('Name depois:', cleanName);
   }, [name]);

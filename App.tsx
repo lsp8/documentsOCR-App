@@ -94,6 +94,12 @@ const App = () => {
     setCPFAdjust(false);
   };
 
+  const handleAddSurname = () => {
+    setModalSurname(false);
+    setModalBlocksVis(true);
+    setIsThereSurname(true);
+  };
+
   useEffect(() => {
     for (let i = 0; i <= blocks.length; i++) {
       if (
@@ -268,9 +274,7 @@ const App = () => {
             <TouchableOpacity
               style={styles.adjustButton}
               onPress={() => {
-                setModalInfoAdjust(false);
-                setNameAdjust(false);
-                setCPFAdjust(false);
+                closeAdjustsModal();
               }}>
               <Text style={styles.adjustButtonText}>Confirmar</Text>
             </TouchableOpacity>
@@ -288,9 +292,7 @@ const App = () => {
             <TouchableOpacity
               style={styles.surnameButtons}
               onPress={() => {
-                setModalSurname(false);
-                setModalBlocksVis(true);
-                setIsThereSurname(true);
+                handleAddSurname();
               }}>
               <Text style={styles.buttonText}>Sim</Text>
             </TouchableOpacity>

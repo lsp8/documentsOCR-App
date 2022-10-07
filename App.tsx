@@ -88,6 +88,12 @@ const App = () => {
     setCPFAdjust(true);
   };
 
+  const closeAdjustsModal = () => {
+    setModalInfoAdjust(false);
+    setNameAdjust(false);
+    setCPFAdjust(false);
+  };
+
   useEffect(() => {
     for (let i = 0; i <= blocks.length; i++) {
       if (
@@ -231,9 +237,7 @@ const App = () => {
             <Text
               style={{fontSize: 20, color: '#09035c'}}
               onPress={() => {
-                setModalInfoAdjust(false);
-                setNameAdjust(false);
-                setCPFAdjust(false);
+                closeAdjustsModal();
               }}>
               X
             </Text>

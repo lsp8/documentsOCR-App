@@ -72,6 +72,12 @@ const App = () => {
     </View>
   );
 
+  const wipeData = () => {
+    setName('');
+    setCPF('');
+    setIsThereSurname(false);
+  };
+
   useEffect(() => {
     for (let i = 0; i <= blocks.length; i++) {
       if (
@@ -163,9 +169,7 @@ const App = () => {
         {(name.length > 1 || CPF.length > 1) && (
           <TouchableOpacity
             onPress={() => {
-              setName('');
-              setCPF('');
-              setIsThereSurname(false);
+              wipeData();
             }}>
             <Text style={styles.clear}>Limpar</Text>
           </TouchableOpacity>

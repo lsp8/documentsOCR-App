@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {StyleSheet, TouchableOpacity} from 'react-native';
+import {StyleSheet, TouchableOpacity, ActivityIndicator} from 'react-native';
 import {
   Modal,
   SafeAreaView,
@@ -23,6 +23,7 @@ const App = () => {
   const [isThereSurname, setIsThereSurname] = useState<boolean>(false);
   const [modalSurname, setModalSurname] = useState<boolean>(false);
   const [blocksAmount, setBlocksAmount] = useState<number>(0);
+  const [OCRLoading, setOCRLoading] = useState<boolean>(false);
 
   const takePhotoFromCamera = () => {
     setModalSurname(false);
@@ -35,8 +36,10 @@ const App = () => {
       height: 400,
       cropping: false,
     }).then(async image => {
+      setOCRLoading(true);
       //console.log(image);
       const result = await TextRecognition.recognize(image.path);
+      setOCRLoading(false);
       console.log('IMAGEM=', image);
       console.log('RESULT=', result);
       setBlocks(result);
@@ -143,7 +146,7 @@ const App = () => {
 
   useEffect(() => {
     console.log('Name antes:', name);
-    let cleanName = name.replace(/NOME|cNOME|c-NOME/, '');
+    let cleanName = name.replace(/NOME|cNOME|c-NOME|c NOME/, '');
     setName(cleanName);
     console.log('Name depois:', cleanName);
   }, [name]);
@@ -311,6 +314,12 @@ const App = () => {
           </View>
         </View>
       </Modal>
+      {OCRLoading && (
+        <ActivityIndicator
+          size="large"
+          color="#36c0f7"
+          style={styles.activityIndicator}></ActivityIndicator>
+      )}
     </SafeAreaView>
   );
 };
@@ -447,6 +456,12 @@ const styles = StyleSheet.create({
   adjustButtonText: {
     fontSize: 16,
     color: '#09035c',
+  },
+  activityIndicator: {
+    position: 'absolute',
+    marginTop: '70%',
+    zIndex: 1,
+    alignSelf: 'center',
   },
 });
 

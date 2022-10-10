@@ -9,4 +9,8 @@ Em um primeiro momento foram testadas diversas combinações de bibliotecas para
 As primeiras funções foram desenvolvidas e testadas utilizando como exemplo de documento uma CNH digital.
 Em seguida o modelo mais recente de CNH está sendo testado.
 
+Para rodar:
+yarn start 
+yarn android
+
 

@@ -28,6 +28,7 @@ const App = () => {
     setModalSurname(false);
     setName('');
     setSurname('');
+    setIsThereSurname(false);
     setCPF('');
     ImageCropPicker.openCamera({
       width: 300,
@@ -142,10 +143,14 @@ const App = () => {
 
   useEffect(() => {
     console.log('Name antes:', name);
-    let cleanName = name.replace('NOME', '');
+    let cleanName = name.replace(/NOME|cNOME|c-NOME/, '');
     setName(cleanName);
     console.log('Name depois:', cleanName);
   }, [name]);
+
+  useEffect(() => {
+    setName(name.concat(' ', surname));
+  }, [surname]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -155,7 +160,7 @@ const App = () => {
           onPress={takePhotoFromCamera}>
           <Text style={styles.header}>OCRCamera</Text>
         </TouchableOpacity>
-        {/* <TouchableOpacity
+        {/* <TouchableOpacity 
           style={styles.camButton}
           onPress={() => {
             setCPF('034.567.132-0709/54/2022333');
@@ -170,7 +175,7 @@ const App = () => {
                 onPress={() => {
                   handleAdjustName();
                 }}>
-                Nome selecionado: {name} {surname}
+                Nome selecionado: {name}
               </Text>
             </View>
           )}

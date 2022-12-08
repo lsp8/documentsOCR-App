@@ -11,6 +11,8 @@ import {
 import TextRecognition from 'react-native-text-recognition';
 import ImageCropPicker from 'react-native-image-crop-picker';
 
+import {ModalInfoAdjust} from './src/Modals/ModalInfoAdjust';
+
 const App = () => {
   const [name, setName] = useState<string>('');
   const [CPF, setCPF] = useState<string>('');
@@ -37,7 +39,6 @@ const App = () => {
       cropping: false,
     }).then(async image => {
       setOCRLoading(true);
-      //console.log(image);
       const result = await TextRecognition.recognize(image.path);
       setOCRLoading(false);
       console.log('IMAGEM=', image);
@@ -145,10 +146,8 @@ const App = () => {
   }, [CPF]);
 
   useEffect(() => {
-    console.log('Name antes:', name);
-    let cleanName = name.replace(/NOME|cNOME|c-NOME|c NOME/, '');
+    let cleanName = name.replace(/NOME|cNOME|c-NOME|c NOME|CNOM/g, '');
     setName(cleanName);
-    console.log('Name depois:', cleanName);
   }, [name]);
 
   useEffect(() => {
@@ -215,13 +214,6 @@ const App = () => {
             </Text>
           </View>
 
-          {/* {objeto.map((item, index) => {
-            return (
-              <Text style={styles.label} key={index}>
-                Bloco{index}={item}
-              </Text>
-            );
-          })} */}
           <Text style={styles.label}> Número de blocos= {blocksAmount}</Text>
 
           <Text style={styles.label}>
@@ -240,7 +232,18 @@ const App = () => {
           {/* </ScrollView> */}
         </View>
       </Modal>
-      <Modal visible={modalInfoAdjust} transparent={true}>
+      <ModalInfoAdjust
+        visible={modalInfoAdjust}
+        handleModalVisibility={closeAdjustsModal}
+        setCPF={setCPF}
+        setName={setName}
+        nameAdjust={nameAdjust}
+        CPFAdjust={CPFAdjust}
+        name={name}
+        CPF={CPF}
+      />
+
+      {/* <Modal visible={modalInfoAdjust} transparent={true}>
         <View style={styles.infoAdjustContainer}>
           <View
             style={{
@@ -288,7 +291,7 @@ const App = () => {
             </TouchableOpacity>
           </View>
         </View>
-      </Modal>
+      </Modal> */}
       <Modal visible={modalSurname && !surname} transparent={true}>
         <View style={styles.surnameModal}>
           <View>

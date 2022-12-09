@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   Modal,
   View,
@@ -28,9 +28,6 @@ export function ModalInfoAdjust({
   name,
   CPF,
 }: ModalProps) {
-  //   const [nameState, setNameState] = useState<string>('');
-  //   const [CPFState, setCPFState] = useState<string>('');
-
   const handleCloseModal = () => {
     handleModalVisibility();
   };
@@ -96,96 +93,6 @@ export function ModalInfoAdjust({
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#09035c',
-    flex: 1,
-    padding: 10,
-  },
-  innerContainer: {
-    justifyContent: 'space-around',
-    flex: 1,
-  },
-  dataContainer: {
-    backgroundColor: '#0b0470',
-    margin: 5,
-    borderColor: 'white',
-    borderWidth: 1,
-    elevation: 5,
-  },
-  data: {
-    color: 'white',
-    fontSize: 18,
-    padding: 10,
-  },
-  clear: {
-    color: 'white',
-    fontSize: 15,
-    alignSelf: 'center',
-    textDecorationLine: 'underline',
-  },
-  camButton: {
-    borderRadius: 15,
-    backgroundColor: '#36c0f7',
-    width: '60%',
-    height: '10%',
-    alignSelf: 'center',
-    justifyContent: 'center',
-  },
-  label: {fontSize: 20, fontWeight: 'bold'},
-  header: {
-    fontSize: 20,
-    alignSelf: 'center',
-    textDecorationLine: 'underline',
-    fontWeight: 'bold',
-    color: 'white',
-  },
-  blockCard: {
-    padding: 15,
-    elevation: 1,
-    borderBottomWidth: 1,
-  },
-  modalBlocks: {
-    elevation: 1,
-    backgroundColor: 'white',
-    position: 'absolute',
-    alignSelf: 'center',
-    top: 20,
-    padding: 5,
-    width: '95%',
-  },
-  surnameModal: {
-    backgroundColor: 'white',
-    height: '20%',
-    marginTop: '20%',
-    marginHorizontal: '5%',
-    borderRadius: 10,
-    width: '80%',
-    alignSelf: 'center',
-  },
-  surnameHeader: {
-    marginTop: '5%',
-    textAlign: 'center',
-    fontSize: 20,
-    color: '#09035c',
-  },
-  surnameButtonsView: {
-    flexDirection: 'row',
-    width: '100%',
-    justifyContent: 'center',
-    marginTop: '10%',
-  },
-  surnameButtons: {
-    borderRadius: 10,
-    borderWidth: 2,
-    borderColor: '#09035c',
-    paddingVertical: 5,
-    paddingHorizontal: 20,
-    marginHorizontal: 20,
-  },
-  buttonText: {
-    color: '#09035c',
-    fontSize: 18,
-  },
   infoAdjustContainer: {
     backgroundColor: 'white',
     position: 'absolute',
@@ -227,11 +134,5 @@ const styles = StyleSheet.create({
   adjustButtonText: {
     fontSize: 16,
     color: '#09035c',
-  },
-  activityIndicator: {
-    position: 'absolute',
-    marginTop: '70%',
-    zIndex: 1,
-    alignSelf: 'center',
   },
 });

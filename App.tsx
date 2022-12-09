@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, TouchableOpacity, ActivityIndicator} from 'react-native';
-import {Modal, SafeAreaView, Text, View, FlatList} from 'react-native';
+import {SafeAreaView, Text, View, FlatList, ScrollView} from 'react-native';
 import TextRecognition from 'react-native-text-recognition';
 import ImageCropPicker from 'react-native-image-crop-picker';
 
@@ -192,7 +192,7 @@ const App = () => {
           </TouchableOpacity>
         )}
       </View>
-      <Modal visible={modalBlocksVis} transparent={true}>
+      {modalBlocksVis && (
         <View style={styles.modalBlocks}>
           <View style={{marginRight: '5%', alignItems: 'flex-end'}}>
             <Text
@@ -203,15 +203,12 @@ const App = () => {
               X
             </Text>
           </View>
-
           <Text style={styles.label}> Número de blocos= {blocksAmount}</Text>
-
           <Text style={styles.label}>
             Selecione o campo que contém o{' '}
             {isThereSurname ? <Text> sobrenome</Text> : <Text> nome</Text>}{' '}
             desejado:
           </Text>
-
           {/* <ScrollView style={{height: 550}}> */}
           <FlatList
             renderItem={({item}) => renderBloco(item)}
@@ -221,7 +218,7 @@ const App = () => {
           />
           {/* </ScrollView> */}
         </View>
-      </Modal>
+      )}
       <ModalInfoAdjust
         visible={modalInfoAdjust}
         handleModalVisibility={closeAdjustsModal}
@@ -304,6 +301,8 @@ const styles = StyleSheet.create({
     top: 20,
     padding: 5,
     width: '95%',
+    display: 'flex',
+    height: '100%',
   },
   activityIndicator: {
     position: 'absolute',

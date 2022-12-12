@@ -144,11 +144,11 @@ const App = () => {
 
   useEffect(() => {
     let cleanName = name.replace(/NOME|cNOME|c-NOME|c NOME|CNOM/g, '');
-    setName(cleanName);
+    setName(cleanName.toUpperCase());
   }, [name]);
 
   useEffect(() => {
-    setName(name.concat(' ', surname));
+    setName(name.concat(' ', surname).toUpperCase());
   }, [surname]);
 
   return (
@@ -209,14 +209,13 @@ const App = () => {
             {isThereSurname ? <Text> sobrenome</Text> : <Text> nome</Text>}{' '}
             desejado:
           </Text>
-          {/* <ScrollView style={{height: 550}}> */}
+
           <FlatList
             renderItem={({item}) => renderBloco(item)}
             data={blocks}
             keyExtractor={item => item}
             showsVerticalScrollIndicator={true}
           />
-          {/* </ScrollView> */}
         </View>
       )}
       <ModalInfoAdjust
@@ -302,7 +301,7 @@ const styles = StyleSheet.create({
     padding: 5,
     width: '95%',
     display: 'flex',
-    height: '100%',
+    height: '90%',
   },
   activityIndicator: {
     position: 'absolute',

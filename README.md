@@ -7,8 +7,13 @@ Aplicativo desenvolvido com a finalidade de extrair nome e CPF de documentos, ut
 Funções desenvolvidas e testadas utilizando como exemplo documentos CNH digital, Nova Carteira-Cartão CNH e o modelo mais comum de CNH.
 
 Para rodar:
-yarn start 
+```
+yarn start
+```
+
+```
 yarn android
+```
 
 Modelos de CNH:
 
